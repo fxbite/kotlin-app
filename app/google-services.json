@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "852052218424",
+    "project_id": "cw1-native",
+    "storage_bucket": "cw1-native.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852052218424:android:d0bc7f991bfb32bbeecccd",
+        "android_client_info": {
+          "package_name": "com.example.cw1native"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852052218424-jk2oqi5ftvk66phfccb8cjvae67qufpi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcXHlAAsid6iKLQoDeWt5xp5lDx6t50zM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852052218424-jk2oqi5ftvk66phfccb8cjvae67qufpi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

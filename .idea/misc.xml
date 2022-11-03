@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/drawable/nav_background_curved.xml" value="0.2505" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/drawable/selector_label.xml" value="0.2505" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/drawable/slector_label.xml" value="0.2505" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/fragment_add.xml" value="0.2513586956521739" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/fragment_home.xml" value="0.2513586956521739" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/fragment_list.xml" value="0.2513586956521739" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/fragment_map.xml" value="0.25" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/menu/bottom_nav.xml" value="0.24010416666666667" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
