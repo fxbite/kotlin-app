@@ -8,5 +8,5 @@ data class Expense(
     var expenseType : String ?= null,
     var date : Date ?= null,
     var time : Time ?=  null,
-    var comment : String ?= null
+    var comment : String
 )

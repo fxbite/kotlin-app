@@ -3,14 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/drawable/filter_button.xml" value="0.2295" />
         <entry key="..\:/Coding/CW1Native/app/src/main/res/drawable/nav_background_curved.xml" value="0.2505" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/drawable/search_bg.xml" value="0.256" />
         <entry key="..\:/Coding/CW1Native/app/src/main/res/drawable/selector_label.xml" value="0.2505" />
         <entry key="..\:/Coding/CW1Native/app/src/main/res/drawable/slector_label.xml" value="0.2505" />
-        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/activity_main.xml" value="0.335" />
-        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/fragment_add.xml" value="0.2513586956521739" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/drawable/thumb.xml" value="0.2295" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/drawable/track.xml" value="0.2295" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/drawable/trip_item.xml" value="0.2295" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/font/fonts.xml" value="0.35052083333333334" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/fragment_add.xml" value="0.375" />
         <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/fragment_home.xml" value="0.2513586956521739" />
-        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/fragment_list.xml" value="0.2513586956521739" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/fragment_list.xml" value="0.335" />
         <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/fragment_map.xml" value="0.25" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/item_list.xml" value="0.3203125" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/list_trip.xml" value="0.32135416666666666" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/list_trips.xml" value="0.3203125" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/thumb.xml" value="0.3203125" />
+        <entry key="..\:/Coding/CW1Native/app/src/main/res/layout/trip_item.xml" value="0.3203125" />
         <entry key="..\:/Coding/CW1Native/app/src/main/res/menu/bottom_nav.xml" value="0.24010416666666667" />
       </map>
     </option>

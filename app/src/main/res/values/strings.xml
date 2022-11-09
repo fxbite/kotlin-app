@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CW1 Native</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="required">Required</string>
+    <string name="required">Required*</string>
     <string name="tripName">Trip Name</string>
     <string name="destination">Destination</string>
     <string name="date">Date</string>
@@ -9,4 +9,5 @@
     <string name="description">Description</string>
     <string name="phone">Support Phone Number</string>
     <string name="country">Country</string>
+    <string name="optional">Optional</string>
 </resources>
