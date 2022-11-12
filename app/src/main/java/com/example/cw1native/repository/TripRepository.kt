@@ -1,5 +1,6 @@
 package com.example.cw1native.repository
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.cw1native.models.ShowTrip
 import com.google.firebase.database.*
@@ -7,7 +8,7 @@ import java.lang.Exception
 
 class TripRepository {
 
-    private val databaseReference : DatabaseReference = FirebaseDatabase.getInstance("https://cw1-native-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Trips")
+    val databaseReference : DatabaseReference = FirebaseDatabase.getInstance("https://cw1-native-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Trips")
 
     @Volatile private var INSTANCE : TripRepository ?= null
 

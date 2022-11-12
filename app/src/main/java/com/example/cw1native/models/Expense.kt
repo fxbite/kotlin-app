@@ -4,9 +4,9 @@ import java.sql.Time
 import java.util.*
 
 data class Expense(
-    var amount : Number ?= null,
+    var amount : String ?= null,
     var expenseType : String ?= null,
-    var date : Date ?= null,
-    var time : Time ?=  null,
-    var comment : String
+    var date : String ?= null,
+    var time : String ?=  null,
+    var comment : String ?= null
 )

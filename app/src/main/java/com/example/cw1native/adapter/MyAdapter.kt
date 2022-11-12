@@ -11,6 +11,7 @@ import com.example.cw1native.models.ShowTrip
 class MyAdapter : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     private val tripList = ArrayList<ShowTrip>()
+    var onItemClick: ((ShowTrip) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
@@ -29,6 +30,9 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
         holder.destination.text = currentItem.destination
         holder.date.text = currentItem.date
 
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(currentItem)
+        }
     }
 
     override fun getItemCount(): Int {

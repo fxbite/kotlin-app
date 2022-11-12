@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DetailTrip">
+
+    <TextView
+        android:id="@+id/tripNameInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:text="Phú Quốc"
+        android:textColor="#F7A76C"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/detailInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripNameInfo">
+
+        <TextView
+            android:id="@+id/destinationInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_place_24"
+            android:drawableTint="#47B5FF"
+            android:text="Ngũ Hành Sơn"
+            android:drawablePadding="8dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#256D85"/>
+
+        <TextView
+            android:id="@+id/dateInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
+            android:drawableTint="#47B5FF"
+            android:text="11-11-2022"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="8dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#256D85"/>
+
+        <TextView
+            android:id="@+id/riskAssessmentInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_warning_24"
+            android:drawableTint="#47B5FF"
+            android:text="Yes"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="8dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#256D85"/>
+
+        <TextView
+            android:id="@+id/descriptionInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_event_note_24"
+            android:drawableTint="#47B5FF"
+            android:text="Solo traveling to Đà Nẵng"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="8dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#256D85"/>
+
+        <TextView
+            android:id="@+id/phoneInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_phone_in_talk_24"
+            android:drawableTint="#47B5FF"
+            android:text="0956789786"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="8dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#256D85"/>
+
+        <TextView
+            android:id="@+id/countryInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_flag_24"
+            android:drawableTint="#47B5FF"
+            android:text="Việt Nam"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="8dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#256D85"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/actionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailInfo">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/updateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:background="@drawable/update_button"
+            android:text="@string/updateTrip"
+            app:backgroundTint="@null" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/deleteButton"
+            android:layout_marginStart="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:text="@string/deleteTrip"
+            app:backgroundTint="@null"
+            android:background="@drawable/delete_button" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/actionButtonExpense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/actionButton">
+
+        <TextView
+            android:id="@+id/showExpenses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/ic_baseline_airplay_24"
+            android:drawablePadding="10dp"
+            android:text="Show Expenses"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addButton"
+            android:layout_marginStart="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:text="@string/add"
+            android:layout_alignParentRight="true"
+            app:backgroundTint="@null"
+            android:background="@drawable/add_button" />
+
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listViewExpense"
+        android:layout_width="0dp"
+        android:layout_marginTop="15dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actionButtonExpense"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
