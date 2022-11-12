@@ -1,8 +1,10 @@
 package com.example.cw1native
 
 import android.app.DatePickerDialog
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.cw1native.databinding.ActivityMainBinding
 import com.example.cw1native.fragment.Home
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.home -> replaceFragment(Home())
                 R.id.add -> replaceFragment(Add())
-                R.id.list -> replaceFragment(List())
+                R.id.list -> replaceFragment(List<Any>())
                 R.id.map -> replaceFragment(Map())
                 else ->{}
             }

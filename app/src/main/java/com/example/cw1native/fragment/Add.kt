@@ -2,7 +2,9 @@ package com.example.cw1native.fragment
 
 import android.app.DatePickerDialog
 import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +15,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import com.example.cw1native.databinding.FragmentAddBinding
 import com.example.cw1native.models.AddTrip
+import com.example.cw1native.models.ShowTrip
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.android.gms.location.Priority
+import com.google.android.gms.tasks.CancellationToken
+import com.google.android.gms.tasks.CancellationTokenSource
+import com.google.android.gms.tasks.OnTokenCanceledListener
+import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,6 +35,7 @@ class Add : Fragment() {
     private var longitude: Number = 0
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var database : DatabaseReference
+    private lateinit var tripNameList : kotlin.collections.List<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,10 +46,14 @@ class Add : Fragment() {
         _binding = FragmentAddBinding.inflate(inflater, container, false)
 
         //Location
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         getLocation()
 
         //Connect database
         database = FirebaseDatabase.getInstance("https://cw1-native-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Trips")
+
+        //Make TripNameLis
+        queryTrips()
 
         //Date Picker
         val myCalendar = Calendar.getInstance()
@@ -112,15 +123,13 @@ class Add : Fragment() {
 
     private fun resetForm(binding: FragmentAddBinding)
     {
-        var message = "Trip Name:=[ " + binding.tripNameEditText.text + " ]"
-        message += "\nDestination:=[ " + binding.destinationEditText.text + " ]"
-        message += "\nDate:=[ " + binding.dateEditText.text + " ]"
-        message += "\nDescription:=[ " + binding.descriptionEditText.text + " ]"
-        message += "\nSupport Phone Number:=[ " + binding.phoneEditText.text + " ]"
-        message += "\nCountry:=[ " + binding.countryEditText.text + " ]"
-        message += "\nRisk Assessment:=[ $riskValue ]"
-        message += "\nLatitue:=[ $latitue ]"
-        message += "\nLongitude:=[ $longitude ]"
+        var message = "Trip Name:               ==>  " + binding.tripNameEditText.text
+        message += "\nDestination:             ==>  " + binding.destinationEditText.text
+        message += "\nDate:                         ==>  " + binding.dateEditText.text
+        message += "\nDescription:             ==>  " + binding.descriptionEditText.text
+        message += "\nPhone Number:       ==>  " + binding.phoneEditText.text
+        message += "\nCountry:                    ==>  " + binding.countryEditText.text
+        message += "\nRisk Assessment:   ==>  $riskValue "
         AlertDialog.Builder(requireContext())
             .setMessage(message)
             .setPositiveButton("Confirm"){ _,_ ->
@@ -181,26 +190,40 @@ class Add : Fragment() {
     }
 
     private fun getLocation() {
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-        val task = fusedLocationProviderClient.lastLocation
-
         if(ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION)
             != PackageManager.PERMISSION_GRANTED
         ) {
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 101)
-
+            ActivityCompat.requestPermissions(requireActivity(),
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 101)
         }
-        task.addOnSuccessListener {
-            if (it !== null) {
-                setLocationValue(it.latitude, it.longitude)
+
+        fusedLocationProviderClient.getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, object: CancellationToken() {
+            override fun onCanceledRequested(p0: OnTokenCanceledListener): CancellationToken {
+                return CancellationTokenSource().token
+            }
+
+            override fun isCancellationRequested(): Boolean {
+                return false
+            }
+        }).addOnSuccessListener { location: Location? ->
+            if(location == null) {
+                Toast.makeText(requireContext(), "Can not get location", Toast.LENGTH_SHORT).show()
+            } else {
+                setLocation(location)
+            }
+        }.addOnFailureListener {
+            if(longitude == 0 && latitue == 0) {
+                getLocation()
             }
         }
     }
 
-    private fun setLocationValue(latitudeValue: Number, longitudeValue: Number) {
-        latitue = latitudeValue
-        longitude = longitudeValue
+    private fun setLocation(it: Location) {
+        longitude = it.longitude
+        latitue= it.latitude
+        Log.d("Test", it.toString())
     }
 
     private fun inputFocusListener(binding: FragmentAddBinding) {
@@ -234,13 +257,48 @@ class Add : Fragment() {
         }
     }
 
+    private fun queryTrips() {
+        database.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                try {
+                    val itemList = mutableListOf<String>()
+                    val trip : kotlin.collections.List<ShowTrip> = snapshot.children.map { dataSnapshot ->
+
+                        dataSnapshot.getValue(ShowTrip::class.java)!!
+                    }
+
+                    for (item in trip) {
+                         itemList.add(item.tripName!!)
+                    }
+
+                    tripNameList = itemList.toList()
+
+                } catch (e: Exception) {
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+    }
+
     private fun validTripName(binding: FragmentAddBinding): String? {
         val tripName = binding.tripNameEditText.text.toString()
         if(tripName.isEmpty()) {
             return "Required*"
         }
+
+        if(tripName.trim() in tripNameList) {
+            return "Trip Name already exist"
+        }
+
         return null
     }
+
 
     private fun validDestination(binding: FragmentAddBinding): String? {
         val destination = binding.destinationEditText.text.toString()

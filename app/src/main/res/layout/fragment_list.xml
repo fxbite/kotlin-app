@@ -6,50 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".fragment.List">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/relativeLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:weightSum="5">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="3">
 
             <SearchView
                 android:id="@+id/searchView"
-                android:layout_width="297dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/search_bg"
+                android:gravity="left"
                 android:iconifiedByDefault="false"
                 android:queryBackground="@android:color/transparent"
                 android:queryHint="Search" />
 
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
             <Button
+                android:id="@+id/searchCondition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/searchCondition"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="16dp"
-                app:backgroundTint="@null"
                 android:background="@drawable/filter_button"
-                android:textSize="11sp"
+                android:singleLine="true"
+                android:text="filter"
                 android:textColor="#fff"
+                android:textSize="11sp"
                 android:textStyle="bold"
-                android:text="filter" />
+                app:backgroundTint="@null" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listView"

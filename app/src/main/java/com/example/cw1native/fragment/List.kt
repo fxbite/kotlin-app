@@ -26,7 +26,7 @@ import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
 import java.util.*
 
-class List : Fragment() {
+class List<T> : Fragment() {
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!

@@ -23,8 +23,8 @@ class ExpenseAdapter: RecyclerView.Adapter<ExpenseAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = expenseList[position]
 
-        holder.expenseType.text = currentItem.expenseType
-        holder.amount.text = currentItem.amount
+        holder.expenseType.text = currentItem.amount
+        holder.amount.text = currentItem.expenseType
         holder.date.text = currentItem.date
         holder.time.text = currentItem.time
         holder.comment.text = currentItem.comment

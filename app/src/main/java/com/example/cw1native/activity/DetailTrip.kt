@@ -2,14 +2,14 @@ package com.example.cw1native.activity
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,6 +33,8 @@ class DetailTrip : AppCompatActivity() {
     private lateinit var tripNameParent : String
     private lateinit var expenseRecyclerView: RecyclerView
     private lateinit var adapter: ExpenseAdapter
+    private lateinit var longitude: String
+    private lateinit var  latitude: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +80,15 @@ class DetailTrip : AppCompatActivity() {
             addExpense()
         }
 
+        //Show On Map
+        findViewById<ImageView>(R.id.copyToClipboard).setOnClickListener {
+
+            val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("Google Map", "https://maps.google.com/?q=$latitude,$longitude")
+            clipboard.setPrimaryClip(clip)
+
+            Toast.makeText(this, "Copied Successfully", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun readData(tripName: String, tripNameView: TextView, destinationView: TextView,
@@ -94,6 +105,9 @@ class DetailTrip : AppCompatActivity() {
                 val phone = it.child("phone").value
                 val country = it.child("country").value
 
+                latitude = it.child("latitude").value.toString()
+                longitude = it.child("longitude").value.toString()
+
                 tripNameView.text = tripName
                 destinationView.text = destination.toString()
                 dateView.text = date.toString()
@@ -103,6 +117,8 @@ class DetailTrip : AppCompatActivity() {
                 countryView.text = country.toString()
 
                 riskValue = riskAssessment.toString()
+
+                findViewById<TextView>(R.id.showOnMap).text = "https://maps.google.com/?q=$latitude,$longitude"
             }
         }
 
