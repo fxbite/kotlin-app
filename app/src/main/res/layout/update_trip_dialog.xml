@@ -12,33 +12,6 @@
         android:paddingBottom="50dp">
 
         <!-- TODO: Update blank fragment layout -->
-        <!--Trip Name-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tripNameContainer"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_marginHorizontal="20dp"
-            app:helperText="@string/required"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:helperTextTextColor="@android:color/holo_red_dark"
-            app:endIconMode="clear_text"
-            app:counterEnabled="true"
-            app:counterMaxLength="20"
-            android:layout_marginTop="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tripNameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:inputType="text"
-                android:hint="@string/tripName"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
 
         <!--Destination-->
         <com.google.android.material.textfield.TextInputLayout
@@ -55,7 +28,7 @@
             app:helperTextTextColor="@android:color/holo_red_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tripNameContainer">
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/destinationEditText"

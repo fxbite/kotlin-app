@@ -89,6 +89,10 @@ class Add : Fragment() {
             setRiskValue(value)
         }
 
+        binding.resetButton.setOnClickListener {
+            resetTripData()
+        }
+
         return binding.root
     }
 
@@ -284,6 +288,23 @@ class Add : Fragment() {
 
         })
 
+    }
+
+    private fun resetTripData() {
+        val message = "Confirm to reset"
+        AlertDialog.Builder(requireContext())
+            .setMessage(message)
+            .setPositiveButton("Confirm"){ _,_ ->
+                database.removeValue().addOnSuccessListener {
+                    Toast.makeText(requireContext(), "Reset Successfully", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(requireContext(), "Reset Failed", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun validTripName(binding: FragmentAddBinding): String? {

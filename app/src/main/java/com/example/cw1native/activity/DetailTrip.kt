@@ -170,7 +170,6 @@ class DetailTrip : AppCompatActivity() {
         }
 
         if(trip!!.isNotEmpty()) {
-            val tripName : TextInputLayout = updateDialogLayout.findViewById(R.id.tripNameContainer)
             val destination : TextInputLayout = updateDialogLayout.findViewById(R.id.destinationContainer)
             val date : TextInputLayout = updateDialogLayout.findViewById(R.id.dateContainer)
             val riskAssessment : SwitchCompat = updateDialogLayout.findViewById(R.id.requiredRisk)
@@ -178,7 +177,7 @@ class DetailTrip : AppCompatActivity() {
             val phone: TextInputLayout = updateDialogLayout.findViewById(R.id.phoneContainer)
             val country : AutoCompleteTextView = updateDialogLayout.findViewById(R.id.countryEditText)
 
-            setTextInput(trip, tripName, destination, date, riskAssessment, description, phone,country)
+            setTextInput(trip, destination, date, riskAssessment, description, phone,country)
         }
 
         val assessment : SwitchCompat = updateDialogLayout.findViewById(R.id.requiredRisk)
@@ -197,7 +196,6 @@ class DetailTrip : AppCompatActivity() {
         searchDialog.setTitle("Update Trip")
         searchDialog.setView(updateDialogLayout)
         searchDialog.setPositiveButton("Update") { _, _ ->
-            val tripName : TextInputEditText = updateDialogLayout.findViewById(R.id.tripNameEditText)
             val destination : TextInputEditText = updateDialogLayout.findViewById(R.id.destinationEditText)
             val date : TextInputEditText = updateDialogLayout.findViewById(R.id.dateEditText)
             val description : TextInputEditText = updateDialogLayout.findViewById(R.id.descriptionEditText)
@@ -205,7 +203,6 @@ class DetailTrip : AppCompatActivity() {
             val country : AutoCompleteTextView = updateDialogLayout.findViewById(R.id.countryEditText)
 
             val tripUpdate = mapOf(
-                "tripName" to tripName.text.toString(),
                 "destination" to destination.text.toString(),
                 "date" to date.text.toString(),
                 "description" to description.text.toString(),
@@ -214,7 +211,7 @@ class DetailTrip : AppCompatActivity() {
                 "riskAssessment" to riskValue
             )
 
-            database.child(tripName.text.toString()).updateChildren(tripUpdate).addOnSuccessListener {
+            database.child(tripNameParent).updateChildren(tripUpdate).addOnSuccessListener {
                 Toast.makeText(this, "Successfully Updated", Toast.LENGTH_SHORT).show()
             }.addOnFailureListener {
                 Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
@@ -233,7 +230,7 @@ class DetailTrip : AppCompatActivity() {
         riskValue = value
     }
 
-    private fun setTextInput(tripName: String, tripNameView: TextInputLayout, destinationView: TextInputLayout,
+    private fun setTextInput(tripName: String, destinationView: TextInputLayout,
          dateView: TextInputLayout, riskAssessmentView: SwitchCompat, descriptionView: TextInputLayout,
          phoneView: TextInputLayout, countryView: AutoCompleteTextView) {
 
@@ -248,7 +245,6 @@ class DetailTrip : AppCompatActivity() {
                 val phone = it.child("phone").value
                 val country = it.child("country").value
 
-                tripNameView.editText?.setText(tripName)
                 destinationView.editText?.setText(destination.toString())
                 dateView.editText?.setText(date.toString())
                 descriptionView.editText?.setText(description.toString())

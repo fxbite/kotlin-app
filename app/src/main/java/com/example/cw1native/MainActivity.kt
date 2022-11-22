@@ -1,10 +1,7 @@
 package com.example.cw1native
 
-import android.app.DatePickerDialog
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.cw1native.databinding.ActivityMainBinding
 import com.example.cw1native.fragment.Home

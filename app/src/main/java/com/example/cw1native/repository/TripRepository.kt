@@ -33,10 +33,11 @@ class TripRepository {
                     val _tripList : List<ShowTrip> = snapshot.children.map { dataSnapshot ->
 
                         dataSnapshot.getValue(ShowTrip::class.java)!!
-
                     }
 
                     tripList.postValue(_tripList)
+
+
 
                 }catch (e : Exception){
 

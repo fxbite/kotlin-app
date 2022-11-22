@@ -233,6 +233,4 @@
         app:layout_constraintTop_toBottomOf="@+id/actionButtonExpense"
         />
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
